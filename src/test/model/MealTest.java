@@ -2,7 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
-import java.util.List;
+
 import java.util.ArrayList;
 
 public class MealTest {
@@ -24,8 +24,9 @@ public class MealTest {
 
     @Test
     void testMeal() {
-        assertEquals(testMeal, testMeal.getName());
-        assertEquals(new ArrayList<Food>(), testMeal.getFoods());
+        Meal testMeal2 = new Meal("Meal 2");
+        assertEquals("Meal 2", testMeal2.getName());
+        assertEquals(new ArrayList<Food>(), testMeal2.getFoods());
     }
 
     @Test

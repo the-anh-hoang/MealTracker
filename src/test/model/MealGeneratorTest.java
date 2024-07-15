@@ -29,13 +29,24 @@ public class MealGeneratorTest {
         assertEquals(listOfFoods, testMGenerator.getSavedFoods()); 
     }
 
-    @Test
-    void testGenerateRandomMeal() {
-        
-    }
 
     @Test
     void generateSuggestedMeal() {
+        Meal highProteinMeal = new Meal("Recommended For Muscle Gain");
+        highProteinMeal.addFood(food3);
+        highProteinMeal.addFood(food1);
+        Meal highProteinGenerated = testMGenerator.generateSuggestedMeal("MG", 2);
+        assertEquals(highProteinMeal.getName(), highProteinGenerated.getName());
+        assertEquals(highProteinMeal.getFoods(), highProteinGenerated.getFoods());
+
+
+        Meal lowCaloriesMeal = new Meal("Recommended For Weight Loss");
+        lowCaloriesMeal.addFood(food2);
+        lowCaloriesMeal.addFood(food3); 
+        Meal lowCaloriesGenerated = testMGenerator.generateSuggestedMeal("WL", 2);
+        assertEquals(highProteinMeal.getName(), highProteinGenerated.getName());
+        assertEquals(lowCaloriesMeal.getFoods(), lowCaloriesGenerated.getFoods());
 
     }
+
 }
