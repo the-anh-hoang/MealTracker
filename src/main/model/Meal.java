@@ -8,23 +8,23 @@ public class Meal {
     private List<Food> foods;
 
     // EFFECTS: instantiates an empty meal with a given name, no food added,
-    // and no nutrition values. 
+    // and no nutrition values.
     public Meal(String name) {
         this.name = name;
         foods = new ArrayList<Food>();
     }
-    
+
     // MODIFIES: this
     // EFFECTS: add a food item to the meal
     public void addFood(Food food) {
         foods.add(food);
     }
 
-    // REQUIRES: 1 <= index <= foods.length() 
+    // REQUIRES: 1 <= index <= foods.length()
     // MODIFIES: this
     // EFFECTS: remove a food item from based on it's index (from 1) in the meal
     public void removeFood(int index) {
-        foods.remove(index-1);
+        foods.remove(index - 1);
     }
 
     // EFFECTS: return the sum of calories of all food items in this
@@ -32,7 +32,7 @@ public class Meal {
         float totalCalories = 0;
         for (Food f : foods) {
             totalCalories += f.getCalories();
-        }    
+        }
         return totalCalories;
     }
 
@@ -41,7 +41,7 @@ public class Meal {
         float totalProtein = 0;
         for (Food f : foods) {
             totalProtein += f.getProtein();
-        }    
+        }
         return totalProtein;
     }
 
@@ -50,7 +50,7 @@ public class Meal {
         float totalCarbs = 0;
         for (Food f : foods) {
             totalCarbs += f.getCarbs();
-        }    
+        }
         return totalCarbs;
     }
 
@@ -59,7 +59,7 @@ public class Meal {
         float totalFat = 0;
         for (Food f : foods) {
             totalFat += f.getFat();
-        }    
+        }
         return totalFat;
     }
 

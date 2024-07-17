@@ -66,36 +66,54 @@ public class User {
     // carbs <= 0.6 * total nutrition value / mealsPerDay
 
     public List<String> evaluateNutrition(int mealIndex, int mealsPerDay) {
+        if (goals == "WL") {
+            return evaluateWeightLoss(mealIndex, mealsPerDay);
+        } else {
+            return evaluateMuscleGain(mealIndex, mealsPerDay);
+        }
+    }
+
+    private List<String> evaluateWeightLoss(int mealIndex, int mealsPerDay) {
+        List<String> listOfErr = new ArrayList<String>();
+        Meal selectedMeal = meals.get(mealIndex - 1);
+        if (sex == "male") {
+            if (selectedMeal
+                    .getTotalCalories() > ((1.3 * ((13.397 * weight) + (4.799 * height) - (5.677 * age) + 88.362)
+                            - 200) / mealsPerDay)) {
+                listOfErr.add("Too much calories");
+            }
+        }
+        if (sex == "female") {
+            if (selectedMeal
+                    .getTotalCalories() > ((1.3 * ((9.247 * weight) + (3.098 * height) - (4.330 * age) + 447.593)
+                            - 200) / mealsPerDay)) {
+                listOfErr.add("Too much calories");
+            }
+        }
+        return listOfErr;
+    }
+
+    private List<String> evaluateMuscleGain(int mealIndex, int mealsPerDay) {
         List<String> listOfErr = new ArrayList<String>();
         Meal selectedMeal = meals.get(mealIndex - 1);
         if (goals == "WL") {
-            if (sex == "male") {
-                if (selectedMeal.getTotalCalories() > 
-                    ((1.3 * ((13.397 * weight) + (4.799 * height) - (5.677 * age) + 88.362) - 200) / mealsPerDay)) {
-                    listOfErr.add("Too much calories");
-                }
-            }
-            if (sex == "female") {
-                if (selectedMeal.getTotalCalories() >
-                    ((1.3 * ((9.247 * weight) + (3.098 * height) - (4.330 * age) + 447.593) - 200)/ mealsPerDay)) {
-                    listOfErr.add("Too much calories");
-                }
-            }
+            return evaluateWeightLoss(mealIndex, mealsPerDay);
         } else {
-            if (selectedMeal.getTotalProtein() < ((1.4*weight)/mealsPerDay)) {
+            if (selectedMeal.getTotalProtein() < ((1.4 * weight) / mealsPerDay)) {
                 listOfErr.add("Not enough protein");
             }
-            float totalNutrition = selectedMeal.getTotalProtein() + selectedMeal.getTotalCarbs() + selectedMeal.getTotalFat();
-            if (selectedMeal.getTotalCarbs() > ((0.6 * totalNutrition)/mealsPerDay)) {
+            float totalNutrition = selectedMeal.getTotalProtein() + selectedMeal.getTotalCarbs()
+                    + selectedMeal.getTotalFat();
+            if (selectedMeal.getTotalCarbs() > ((0.6 * totalNutrition) / mealsPerDay)) {
                 listOfErr.add("Too much carbs");
             }
-            
-            if (selectedMeal.getTotalFat() > ((0.25 * totalNutrition)/mealsPerDay)) {
+
+            if (selectedMeal.getTotalFat() > ((0.25 * totalNutrition) / mealsPerDay)) {
                 listOfErr.add("Too much fat");
             }
-            
+
         }
-        return listOfErr; 
+        return listOfErr;
     }
 
     public String getName() {
