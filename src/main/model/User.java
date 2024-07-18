@@ -96,22 +96,18 @@ public class User {
     private List<String> evaluateMuscleGain(int mealIndex, int mealsPerDay) {
         List<String> listOfErr = new ArrayList<String>();
         Meal selectedMeal = meals.get(mealIndex - 1);
-        if (goals == "WL") {
-            return evaluateWeightLoss(mealIndex, mealsPerDay);
-        } else {
-            if (selectedMeal.getTotalProtein() < ((1.4 * weight) / mealsPerDay)) {
-                listOfErr.add("Not enough protein");
-            }
-            float totalNutrition = selectedMeal.getTotalProtein() + selectedMeal.getTotalCarbs()
-                    + selectedMeal.getTotalFat();
-            if (selectedMeal.getTotalCarbs() > ((0.6 * totalNutrition) / mealsPerDay)) {
-                listOfErr.add("Too much carbs");
-            }
 
-            if (selectedMeal.getTotalFat() > ((0.25 * totalNutrition) / mealsPerDay)) {
-                listOfErr.add("Too much fat");
-            }
+        if (selectedMeal.getTotalProtein() < ((1.4 * weight) / mealsPerDay)) {
+            listOfErr.add("Not enough protein");
+        }
+        float totalNutrition = selectedMeal.getTotalProtein() + selectedMeal.getTotalCarbs()
+                + selectedMeal.getTotalFat();
+        if (selectedMeal.getTotalCarbs() > ((0.6 * totalNutrition) / mealsPerDay)) {
+            listOfErr.add("Too much carbs");
+        }
 
+        if (selectedMeal.getTotalFat() > ((0.25 * totalNutrition) / mealsPerDay)) {
+            listOfErr.add("Too much fat");
         }
         return listOfErr;
     }

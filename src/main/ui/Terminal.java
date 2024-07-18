@@ -12,11 +12,59 @@ public class Terminal {
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to my Diet Planner");
+        System.out.println("-------- Welcome to my Diet Planner --------");
+        User user = createNewUser(scanner);
+        while (true) {
+            printMenu();
+            int choice = scanner.nextInt();
+            System.out.println("\n");
+            switch (choice) {
+                case 1:
+                    addFood(user, scanner);
+                    break;
+                case 2:
+                    viewSavedFoods(user.getFoods());
+                    break;
+                case 3:
+                    viewSavedMeals(user.getMeals());
+                    break;
+                case 4:
+                    createMealManual(user, scanner);
+                    break;
+                case 5:
+                    generateMeal(user, scanner);
+                    break;
+                case 6:
+                    evaluate(user, scanner);
+                    break;
+                case 7:
+                    changeCurrentGoal(user);
+                    break;
+                case 8:
+                    System.out.println("Thank you for using calories tracker!");
+                    return;
+                default:
+                    System.out.println("Invalid, please enter single digits from 1-7!");
+                    break;
+            }
+            System.out.println();
+        }
+    }
+
+    private void changeCurrentGoal(User user) {
+        user.changeGoal();
+        if (("MG").equals(user.getGoals())) {
+            System.out.println("Your goal is now set to gain muscle");
+        } else {
+            System.out.println("Your goal is now set to lost weight");
+        }
+    }
+
+    private User createNewUser(Scanner scanner) {
         System.out.println(
                 "First, please enter your name, weight, height, age, sex, and goals so we can best assist you!");
         System.out.print("Name: ");
-        String name = scanner.next();
+        String name = scanner.nextLine();
         System.out.print("Weight (kg): ");
         Float weight = scanner.nextFloat();
         System.out.print("Height (cm): ");
@@ -31,73 +79,27 @@ public class Terminal {
         System.out.println("\n");
         System.out.println("Thank you, the app is tailored to your specific characteristics!");
         System.out.println("Please choose from the options provided below by typing 1-8");
+        return user;
+    }
 
-        while (true) {
-            System.out.println("-------------------------------------");
-            System.out.println("---------------- Menu ---------------");
-            System.out.println("1. Add new food");
-            System.out.println("2. View saved foods");
-            System.out.println("3. View saved meals");
-            System.out.println("4. Create new meal (manual)");
-            System.out.println("5. Generate a meal based on your goals");
-            System.out.println("6. Evaluate your meal");
-            System.out.println("7. Change goals");
-            System.out.println("8. Exit");
-            System.out.print("Choice: ");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    addFood(user, scanner);
-                    break;
-
-                case 2:
-                    viewSavedFoods(user.getFoods());
-                    break;
-
-                case 3:
-                    viewSavedMeals(user.getMeals());
-
-                case 4:
-                    System.out.print("Meal's name: ");
-                    String mealName = scanner.next();
-                    System.out.print("How much food would you like to add?: ");
-                    createMealManual(user, scanner, mealName, scanner.nextInt());
-                    break;
-
-                case 5:
-                    System.out.print("How much food would you like your meal to be? (maximum "
-                            + (user.getFoods()).size() + " items): ");
-                    generateMeal(user, scanner.nextInt());
-                    break;
-
-                case 6:
-                    evaluate(user, scanner);
-                    break;
-
-                case 7:
-                    user.changeGoal();
-                    if (("MG").equals(user.getGoals())) {
-                        System.out.println("Your goal is now set to gain muscle");
-                    } else {
-                        System.out.println("Your goal is now set to lost weight");
-                    }
-
-                case 8:
-                    System.out.println("Thank you for using calories tracker!");
-                    return;
-
-                default:
-                    System.out.println("Invalid, please enter single digits from 1-7!");
-
-            }
-            System.out.println("\n");
-        }
+    private void printMenu() {
+        System.out.println("---------------- Menu ---------------");
+        System.out.println("1. Add new food");
+        System.out.println("2. View saved foods");
+        System.out.println("3. View saved meals");
+        System.out.println("4. Create new meal (manual)");
+        System.out.println("5. Generate a meal based on your goals");
+        System.out.println("6. Evaluate your meal");
+        System.out.println("7. Change goals");
+        System.out.println("8. Exit");
+        System.out.print("Choice: ");
     }
 
     // EFFECTS: ask for attributes of foods and save them to user's list
     private void addFood(User user, Scanner scanner) {
+        scanner.nextLine();
         System.out.print("Food name: ");
-        String foodName = scanner.next();
+        String foodName = scanner.nextLine();
         System.out.print("Calories: ");
         Float calories = scanner.nextFloat();
         System.out.print("Protein (g): ");
@@ -114,14 +116,15 @@ public class Terminal {
         if (userFoods.isEmpty()) {
             System.out.println("No foods saved.");
         } else {
+            System.out.println("Here's your saved foods:");
             Food currentFood;
             for (int i = 0; i < userFoods.size(); i++) {
                 currentFood = userFoods.get(i);
                 System.out.println((i + 1) + ". " + currentFood.getName());
-                System.out.println("     Calories: " + currentFood.getCalories());
-                System.out.println("     Protein: " + currentFood.getProtein());
-                System.out.println("     Carbs: " + currentFood.getCarbs());
-                System.out.println("     Fat: " + currentFood.getFat());
+                System.out.println("    Calories: " + currentFood.getCalories());
+                System.out.println("    Protein: " + currentFood.getProtein());
+                System.out.println("    Carbs: " + currentFood.getCarbs());
+                System.out.println("    Fat: " + currentFood.getFat());
             }
         }
     }
@@ -142,13 +145,18 @@ public class Terminal {
         }
     }
 
-    private void createMealManual(User user, Scanner scanner, String name, int amount) {
+    private void createMealManual(User user, Scanner scanner) {
+        scanner.nextLine();
+        System.out.print("Meal's name: ");
+        String name = scanner.nextLine();
+        System.out.print("How much food would you like to add?: ");
+        int amount = scanner.nextInt();
         List<Food> userFoods = user.getFoods();
         viewSavedFoods(userFoods);
         int selection;
         Meal newMeal = new Meal(name);
         for (int i = 0; i < amount; i++) {
-            System.out.println("Please select the food you'd like to add (1-" + userFoods.size() + ")");
+            System.out.print("Please select the food you'd like to add (1-" + userFoods.size() + ")");
             selection = scanner.nextInt();
             newMeal.addFood(userFoods.get(selection - 1));
             System.out.println("Food added to meal successfully!");
@@ -158,14 +166,17 @@ public class Terminal {
         System.out.println("Meal saved successfully!");
     }
 
-    private void generateMeal(User user, int amount) {
+    private void generateMeal(User user, Scanner scanner) {
+        System.out.print("How much food would you like your meal to be? (maximum "
+                + (user.getFoods()).size() + " items): ");
+        int amount = scanner.nextInt();
         MealGenerator mealGenerator = new MealGenerator(user.getFoods());
         Meal newMeal = mealGenerator.generateSuggestedMeal(user.getGoals(), amount);
         System.out.println("Name: " + newMeal.getName());
-        System.out.println("     Total Calories: " + newMeal.getTotalCalories());
-        System.out.println("     Total Protein: " + newMeal.getTotalProtein());
-        System.out.println("     Total Carbs: " + newMeal.getTotalCarbs());
-        System.out.println("     Total Fat: " + newMeal.getTotalFat());
+        System.out.println("    Total Calories: " + newMeal.getTotalCalories());
+        System.out.println("    Total Protein: " + newMeal.getTotalProtein());
+        System.out.println("    Total Carbs: " + newMeal.getTotalCarbs());
+        System.out.println("    Total Fat: " + newMeal.getTotalFat());
         user.addMeal(newMeal);
         System.out.println("Meal generated and added succesfully!");
     }
@@ -176,15 +187,17 @@ public class Terminal {
         if (!userMeals.isEmpty()) {
             System.out.print("How meals would you be eating per day?: ");
             int mealsPerDay = scanner.nextInt();
-            System.out.print("Select meal by index (from 1) to evaluate: ");
+            System.out.print("Select meal by index to evaluate: ");
             int selection = scanner.nextInt();
             List<String> listOfErr = user.evaluateNutrition(selection, mealsPerDay);
             if (listOfErr.isEmpty()) {
-                System.out.println("This meals meets your goals and characteristics");
+                System.out.println();
+                System.out.println("--> This meals meets your goals and characteristics");
             } else {
-                System.out.println("Problems: ");
+                System.out.println();
+                System.out.println("Problems !!");
                 for (String str : listOfErr) {
-                    System.out.println("  - " + str);
+                    System.out.println("  -> " + str);
                 }
             }
         } else {
