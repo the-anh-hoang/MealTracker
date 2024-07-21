@@ -12,6 +12,6 @@ As someone who likes to work out, this project is interesting for me because it 
 - As a user, I want to calculate total calories of the meals I created
 - As a user, I want the user to choose if they want to choose between creating their own meal or would like a random generated one
 - As a user, I want to choose my goals (loosing weight, gaining muscle) and the program would evaluate my nutrients to see if they suit my goals. 
-- As a user, I want to save my information as a user in the system
-- As a user, I want to have access to all meals and foods that I have saved
+- As a user, I want to save my information as a user in the system (if I wish to do so)
+- As a user, I want to have the option to access to all meals and foods that I have saved
 
