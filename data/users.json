@@ -1,0 +1,78 @@
+{
+    "Saved meals": [
+        {
+            "foods": [
+                {
+                    "carbs": 2,
+                    "protein": 5,
+                    "name": "Egg",
+                    "fat": 2,
+                    "calories": 20
+                },
+                {
+                    "carbs": 2,
+                    "protein": 25,
+                    "name": "Chicken",
+                    "fat": 20,
+                    "calories": 200
+                },
+                {
+                    "carbs": 2,
+                    "protein": 24,
+                    "name": "Salmon",
+                    "fat": 15,
+                    "calories": 300
+                }
+            ],
+            "name": "Recommended For Weight Loss"
+        },
+        {
+            "foods": [
+                {
+                    "carbs": 2,
+                    "protein": 5,
+                    "name": "Egg",
+                    "fat": 2,
+                    "calories": 20
+                },
+                {
+                    "carbs": 2,
+                    "protein": 25,
+                    "name": "Chicken",
+                    "fat": 20,
+                    "calories": 200
+                }
+            ],
+            "name": "Recommended For Weight Loss"
+        }
+    ],
+    "goal": "WL",
+    "sex": "male",
+    "Saved foods": [
+        {
+            "carbs": 2,
+            "protein": 5,
+            "name": "Egg",
+            "fat": 2,
+            "calories": 20
+        },
+        {
+            "carbs": 2,
+            "protein": 25,
+            "name": "Chicken",
+            "fat": 20,
+            "calories": 200
+        },
+        {
+            "carbs": 2,
+            "protein": 24,
+            "name": "Salmon",
+            "fat": 15,
+            "calories": 300
+        }
+    ],
+    "weight": 70,
+    "age": 19,
+    "username": "Harry",
+    "height": 175
+}

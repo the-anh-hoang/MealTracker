@@ -1,8 +1,12 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import persistence.JsonReader;
+import persistence.JsonWriter; 
 import model.Food;
 import model.Meal;
 import model.MealGenerator;
@@ -10,17 +14,25 @@ import model.User;
 
 public class Terminal {
 
+    private static final String DEST = "./data/users.json";
+    private User user;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
+
     public void run() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("-------- Welcome to my Diet Planner --------");
-        User user = createNewUser(scanner);
+        jsonWriter = new JsonWriter(DEST);
+        jsonReader = new JsonReader(DEST);
+        Scanner scanner = new Scanner(System.in);
+        user = createNewUser(scanner);
         while (true) {
             printMenu();
             int choice = scanner.nextInt();
             System.out.println("\n");
             switch (choice) {
                 case 1:
-                    addFood(user, scanner);
+                    addFood(scanner);
                     break;
                 case 2:
                     viewSavedFoods(user.getFoods());
@@ -29,18 +41,24 @@ public class Terminal {
                     viewSavedMeals(user.getMeals());
                     break;
                 case 4:
-                    createMealManual(user, scanner);
+                    createMealManual(scanner);
                     break;
                 case 5:
-                    generateMeal(user, scanner);
+                    generateMeal(scanner);
                     break;
                 case 6:
-                    evaluate(user, scanner);
+                    evaluate(scanner);
                     break;
                 case 7:
                     changeCurrentGoal(user);
                     break;
                 case 8:
+                    saveData();
+                    break;
+                case 9:
+                    loadData();
+                    break; 
+                case 10:
                     System.out.println("Thank you for using calories tracker!");
                     return;
                 default:
@@ -91,12 +109,14 @@ public class Terminal {
         System.out.println("5. Generate a meal based on your goals");
         System.out.println("6. Evaluate your meal");
         System.out.println("7. Change goals");
-        System.out.println("8. Exit");
+        System.out.println("8. Save data");
+        System.out.println("9. Load data");
+        System.out.println("10. Exit");
         System.out.print("Choice: ");
     }
 
     // EFFECTS: ask for attributes of foods and save them to user's list
-    private void addFood(User user, Scanner scanner) {
+    private void addFood(Scanner scanner) {
         scanner.nextLine();
         System.out.print("Food name: ");
         String foodName = scanner.nextLine();
@@ -125,6 +145,7 @@ public class Terminal {
                 System.out.println("    Protein: " + currentFood.getProtein());
                 System.out.println("    Carbs: " + currentFood.getCarbs());
                 System.out.println("    Fat: " + currentFood.getFat());
+                System.out.println();
             }
         }
     }
@@ -145,7 +166,7 @@ public class Terminal {
         }
     }
 
-    private void createMealManual(User user, Scanner scanner) {
+    private void createMealManual(Scanner scanner) {
         scanner.nextLine();
         System.out.print("Meal's name: ");
         String name = scanner.nextLine();
@@ -166,7 +187,7 @@ public class Terminal {
         System.out.println("Meal saved successfully!");
     }
 
-    private void generateMeal(User user, Scanner scanner) {
+    private void generateMeal(Scanner scanner) {
         System.out.print("How much food would you like your meal to be? (maximum "
                 + (user.getFoods()).size() + " items): ");
         int amount = scanner.nextInt();
@@ -181,7 +202,7 @@ public class Terminal {
         System.out.println("Meal generated and added succesfully!");
     }
 
-    private void evaluate(User user, Scanner scanner) {
+    private void evaluate(Scanner scanner) {
         List<Meal> userMeals = user.getMeals();
         viewSavedMeals(userMeals);
         if (!userMeals.isEmpty()) {
@@ -203,6 +224,26 @@ public class Terminal {
         } else {
             return;
         }
+    }
+
+    private void saveData() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(user);
+            jsonWriter.close();
+            System.out.println("Saved " + user.getName() + " to " + DEST);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + DEST);
+        }
+    }
+
+    private void loadData() {
+        try {
+            user = jsonReader.read();
+            System.out.println("Loaded user " + user.getName() + " from" + DEST);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + DEST);
+        } 
     }
 
 }

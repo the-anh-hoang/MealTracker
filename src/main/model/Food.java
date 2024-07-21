@@ -1,6 +1,9 @@
 package model;
 
-public class Food {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Food implements Writable {
 
     private String name;
     private float calories;
@@ -36,5 +39,21 @@ public class Food {
 
     public float getFat() {
         return this.fat;
+    }
+
+    // EFFECTS: returns string representation of this
+    public String toString() {
+        return name; 
+    }
+
+    
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("calories", calories);
+        json.put("protein", protein);
+        json.put("carbs", carbs);
+        json.put("fat", fat);
+        return json;
     }
 }

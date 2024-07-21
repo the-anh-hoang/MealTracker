@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Writable {
     private String name;
     private float weight;
     private float height;
@@ -110,6 +114,38 @@ public class User {
             listOfErr.add("Too much fat");
         }
         return listOfErr;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("username", name); 
+        json.put("weight", weight); 
+        json.put("height", height);
+        json.put("sex", sex);
+        json.put("age", age);
+        json.put("goal", goals);
+        json.put("Saved foods", savedFoodsToJson());
+        json.put("Saved meals", savedMealsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns list of foods in this user as a JSON array
+    private JSONArray savedFoodsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Food f : foods) {
+            jsonArray.put(f.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns list of meals in this user to a JSON array
+    private JSONArray savedMealsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Meal m : meals) {
+            jsonArray.put(m.toJson()); 
+        }
+        return jsonArray;
     }
 
     public String getName() {

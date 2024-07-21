@@ -3,7 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Meal {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Meal implements Writable {
     private String name;
     private List<Food> foods;
 
@@ -69,5 +72,22 @@ public class Meal {
 
     public List<Food> getFoods() {
         return this.foods;
+    }
+
+    // EFFECTS: returns string representation of this
+    public String toString() {
+        String foodContained = new String(); 
+        for (Food f : foods) {
+            foodContained += ", " + f.getName();
+        }
+        return name + ": " + foodContained;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("foods", foods); 
+        return json; 
     }
 }
