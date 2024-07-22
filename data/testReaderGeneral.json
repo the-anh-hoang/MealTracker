@@ -1,0 +1,71 @@
+{
+    "Saved meals": [
+        {
+            "foods": [
+                {
+                    "carbs": 2,
+                    "protein": 25,
+                    "fat": 5,
+                    "name": "Chicken",
+                    "calories": 200
+                },
+                {
+                    "carbs": 3,
+                    "protein": 25,
+                    "fat": 12,
+                    "name": "Salmon",
+                    "calories": 300
+                }
+            ],
+            "name": "meal1"
+        },
+        {
+            "foods": [
+                {
+                    "carbs": 3,
+                    "protein": 25,
+                    "fat": 12,
+                    "name": "Salmon",
+                    "calories": 300
+                },
+                {
+                    "carbs": 2,
+                    "protein": 6,
+                    "fat": 5,
+                    "name": "Egg",
+                    "calories": 20
+                }
+            ],
+            "name": "meal2"
+        }
+    ],
+    "goal": "MG",
+    "sex": "male",
+    "weight": 65,
+    "Saved foods": [
+        {
+            "carbs": 2,
+            "protein": 25,
+            "name": "Chicken",
+            "fat": 5,
+            "calories": 200
+        },
+        {
+            "carbs": 3,
+            "protein": 25,
+            "name": "Salmon",
+            "fat": 12,
+            "calories": 300
+        },
+        {
+            "carbs": 2,
+            "protein": 6,
+            "name": "Egg",
+            "fat": 5,
+            "calories": 20
+        }
+    ],
+    "age": 19,
+    "username": "Harry",
+    "height": 175
+}

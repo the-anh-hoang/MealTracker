@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import persistence.JsonReader;
-import persistence.JsonWriter; 
+import persistence.JsonWriter;
 import model.Food;
 import model.Meal;
 import model.MealGenerator;
@@ -18,58 +18,73 @@ public class Terminal {
     private User user;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-
+    private Scanner scanner;
 
     public void run() {
-        System.out.println("-------- Welcome to my Diet Planner --------");
+
+        scanner = new Scanner(System.in);
         jsonWriter = new JsonWriter(DEST);
         jsonReader = new JsonReader(DEST);
-        Scanner scanner = new Scanner(System.in);
-        user = createNewUser(scanner);
-        while (true) {
+
+        System.out.println("-------- Welcome to my Diet Planner --------");
+        int init = initialize();
+        if (init == 1) {
+            loadData();
+        } else {
+            user = createNewUser();
+        }
+        System.out.println();
+        mainLoop();
+    }
+
+    private void mainLoop() {
+        int choice;
+        boolean running = true;
+        while (running) {
             printMenu();
-            int choice = scanner.nextInt();
+            choice = scanner.nextInt();
             System.out.println("\n");
-            switch (choice) {
-                case 1:
-                    addFood(scanner);
-                    break;
-                case 2:
-                    viewSavedFoods(user.getFoods());
-                    break;
-                case 3:
-                    viewSavedMeals(user.getMeals());
-                    break;
-                case 4:
-                    createMealManual(scanner);
-                    break;
-                case 5:
-                    generateMeal(scanner);
-                    break;
-                case 6:
-                    evaluate(scanner);
-                    break;
-                case 7:
-                    changeCurrentGoal(user);
-                    break;
-                case 8:
-                    saveData();
-                    break;
-                case 9:
-                    loadData();
-                    break; 
-                case 10:
-                    System.out.println("Thank you for using calories tracker!");
-                    return;
-                default:
-                    System.out.println("Invalid, please enter single digits from 1-7!");
-                    break;
-            }
+            running = runOption(choice);
             System.out.println();
         }
     }
 
-    private void changeCurrentGoal(User user) {
+    private boolean runOption(int choice) {
+        switch (choice) {
+            case 1:
+                addFood();
+                return true;
+            case 2:
+                viewSavedFoods(user.getFoods());
+                return true;
+            case 3:
+                viewSavedMeals(user.getMeals());
+                return true;
+            case 4:
+                createMealManual();
+                return true;
+            case 5:
+                generateMeal();
+                return true;
+            case 6:
+                evaluate();
+                return true;
+            case 7:
+                changeCurrentGoal();
+                return true;
+            case 8:
+                saveData();
+                return true;
+            case 9:
+                System.out.println("Thank you for using calories tracker!");
+                return false;
+            default:
+                System.out.println("Invalid, please enter single digits from 1-9!");
+                return true;
+        }
+    }
+
+    private void changeCurrentGoal() {
         user.changeGoal();
         if (("MG").equals(user.getGoals())) {
             System.out.println("Your goal is now set to gain muscle");
@@ -78,9 +93,18 @@ public class Terminal {
         }
     }
 
-    private User createNewUser(Scanner scanner) {
+    private int initialize() {
+        System.out.println("Would you like to load saved data or continue as a new user?");
+        System.out.println("1. Load Saved Data");
+        System.out.println("2. New User");
+        System.out.print("Choose (1 or 2): ");
+        return scanner.nextInt();
+    }
+
+    private User createNewUser() {
         System.out.println(
-                "First, please enter your name, weight, height, age, sex, and goals so we can best assist you!");
+                "Enter your name, weight, height, age, sex, and goals so we can best assist you!");
+        scanner.nextLine();
         System.out.print("Name: ");
         String name = scanner.nextLine();
         System.out.print("Weight (kg): ");
@@ -96,7 +120,7 @@ public class Terminal {
         User user = new User(name, weight, height, age, sex, goals);
         System.out.println("\n");
         System.out.println("Thank you, the app is tailored to your specific characteristics!");
-        System.out.println("Please choose from the options provided below by typing 1-8");
+        System.out.println("Please choose from the options provided below by typing 1-9");
         return user;
     }
 
@@ -110,13 +134,12 @@ public class Terminal {
         System.out.println("6. Evaluate your meal");
         System.out.println("7. Change goals");
         System.out.println("8. Save data");
-        System.out.println("9. Load data");
-        System.out.println("10. Exit");
+        System.out.println("9. Exit");
         System.out.print("Choice: ");
     }
 
     // EFFECTS: ask for attributes of foods and save them to user's list
-    private void addFood(Scanner scanner) {
+    private void addFood() {
         scanner.nextLine();
         System.out.print("Food name: ");
         String foodName = scanner.nextLine();
@@ -166,7 +189,7 @@ public class Terminal {
         }
     }
 
-    private void createMealManual(Scanner scanner) {
+    private void createMealManual() {
         scanner.nextLine();
         System.out.print("Meal's name: ");
         String name = scanner.nextLine();
@@ -187,7 +210,7 @@ public class Terminal {
         System.out.println("Meal saved successfully!");
     }
 
-    private void generateMeal(Scanner scanner) {
+    private void generateMeal() {
         System.out.print("How much food would you like your meal to be? (maximum "
                 + (user.getFoods()).size() + " items): ");
         int amount = scanner.nextInt();
@@ -202,7 +225,7 @@ public class Terminal {
         System.out.println("Meal generated and added succesfully!");
     }
 
-    private void evaluate(Scanner scanner) {
+    private void evaluate() {
         List<Meal> userMeals = user.getMeals();
         viewSavedMeals(userMeals);
         if (!userMeals.isEmpty()) {
@@ -243,7 +266,7 @@ public class Terminal {
             System.out.println("Loaded user " + user.getName() + " from" + DEST);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + DEST);
-        } 
+        }
     }
 
 }

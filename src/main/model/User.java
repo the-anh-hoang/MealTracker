@@ -119,8 +119,8 @@ public class User implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("username", name); 
-        json.put("weight", weight); 
+        json.put("username", name);
+        json.put("weight", weight);
         json.put("height", height);
         json.put("sex", sex);
         json.put("age", age);
@@ -143,7 +143,7 @@ public class User implements Writable {
     private JSONArray savedMealsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Meal m : meals) {
-            jsonArray.put(m.toJson()); 
+            jsonArray.put(m.toJson());
         }
         return jsonArray;
     }
@@ -160,20 +160,24 @@ public class User implements Writable {
         return this.height;
     }
 
+    public float getAge() {
+        return this.age;
+    }
+
     public String getSex() {
-        return sex;
+        return this.sex;
     }
 
     public String getGoals() {
-        return goals;
+        return this.goals;
     }
 
     public List<Meal> getMeals() {
-        return meals;
+        return this.meals;
     }
 
     public List<Food> getFoods() {
-        return foods;
+        return this.foods;
     }
 
 }

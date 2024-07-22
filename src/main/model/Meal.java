@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.json.JSONObject;
 import persistence.Writable;
@@ -74,20 +75,25 @@ public class Meal implements Writable {
         return this.foods;
     }
 
-    // EFFECTS: returns string representation of this
-    public String toString() {
-        String foodContained = new String(); 
-        for (Food f : foods) {
-            foodContained += ", " + f.getName();
-        }
-        return name + ": " + foodContained;
-    }
-
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("foods", foods); 
-        return json; 
+        json.put("foods", foods);
+        return json;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Meal meal = (Meal) o;
+        return Objects.equals(name, meal.name) &&
+               Objects.equals(foods, meal.foods);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, foods);
     }
 }

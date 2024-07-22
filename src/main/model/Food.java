@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -41,12 +43,6 @@ public class Food implements Writable {
         return this.fat;
     }
 
-    // EFFECTS: returns string representation of this
-    public String toString() {
-        return name; 
-    }
-
-    
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
@@ -55,5 +51,22 @@ public class Food implements Writable {
         json.put("carbs", carbs);
         json.put("fat", fat);
         return json;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Food food = (Food) o;
+        return calories == food.calories &&
+               protein == food.protein &&
+               carbs == food.carbs &&
+               fat == food.fat &&
+               Objects.equals(name, food.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, calories, protein, carbs, fat);
     }
 }

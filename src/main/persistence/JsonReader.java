@@ -25,7 +25,7 @@ public class JsonReader {
     public User read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseUser(jsonObject); 
+        return parseUser(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -40,12 +40,12 @@ public class JsonReader {
     // EFFECTS: parses user from JSON object and returns it
     private User parseUser(JSONObject jsonObject) {
         String name = jsonObject.getString("username");
-        Float weight = jsonObject.getFloat("weight"); 
+        Float weight = jsonObject.getFloat("weight");
         Float height = jsonObject.getFloat("height");
         int age = jsonObject.getInt("age");
         String sex = jsonObject.getString("sex");
-        String goals = jsonObject.getString("goal"); 
-        
+        String goals = jsonObject.getString("goal");
+
         User user = new User(name, weight, height, age, sex, goals);
         addFoods(user, jsonObject);
         addMeals(user, jsonObject);
@@ -66,12 +66,12 @@ public class JsonReader {
     // EFFECTS: parses food from JSON object and add it to user
     private void addFood(User user, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Float calories = jsonObject.getFloat("calories"); 
+        Float calories = jsonObject.getFloat("calories");
         Float protein = jsonObject.getFloat("protein");
         Float fat = jsonObject.getFloat("fat");
         Float carbs = jsonObject.getFloat("carbs");
         Food tempFood = new Food(name, calories, protein, carbs, fat);
-        user.addFood(tempFood); 
+        user.addFood(tempFood);
     }
 
     // MODIFIES: user
@@ -101,14 +101,11 @@ public class JsonReader {
     // EFFECTS: parses food from foodJsonObject and add it to meal
     private void addFoodToMeal(Meal meal, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Float calories = jsonObject.getFloat("calories"); 
+        Float calories = jsonObject.getFloat("calories");
         Float protein = jsonObject.getFloat("protein");
         Float fat = jsonObject.getFloat("fat");
         Float carbs = jsonObject.getFloat("carbs");
         Food tempFood = new Food(name, calories, protein, carbs, fat);
         meal.addFood(tempFood);
     }
-
-
-    
 }

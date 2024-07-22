@@ -14,16 +14,20 @@ public class JsonWriter {
 
     // EFFECTS: construcs writer to write to specified destination
     public JsonWriter(String dest) {
-        this.dest = dest; 
+        this.dest = dest;
     }
 
     // MODIFIES: this
     // EFFECTS: opens writer; throws FileNotFoundException if destination file
     // cannot be opened for writing
     public void open() throws FileNotFoundException {
-        writer = new PrintWriter(new File(dest));
+        File file = new File(dest);
+        if (!file.exists()) {
+            throw new FileNotFoundException("File not found: " + dest);
+        }
+        writer = new PrintWriter(file);
     }
-    
+
     // MODIFIES: this
     // EFFECTS: writes JSON representation of User to file
     public void write(User user) {
@@ -40,6 +44,6 @@ public class JsonWriter {
     // MODIFIES: this
     // EFFECTS: writes string to file
     private void saveToFile(String json) {
-        writer.print(json); 
+        writer.print(json);
     }
 }
