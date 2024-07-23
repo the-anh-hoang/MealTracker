@@ -52,17 +52,21 @@ public class Food implements Writable {
         json.put("fat", fat);
         return json;
     }
-    
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Food food = (Food) o;
-        return calories == food.calories &&
-               protein == food.protein &&
-               carbs == food.carbs &&
-               fat == food.fat &&
-               Objects.equals(name, food.name);
+        return calories == food.calories
+                && protein == food.protein
+                && carbs == food.carbs
+                && fat == food.fat
+                && Objects.equals(name, food.name);
     }
 
     @Override
