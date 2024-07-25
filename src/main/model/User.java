@@ -107,11 +107,11 @@ public class User implements Writable {
         float totalNutrition = selectedMeal.getTotalProtein() + selectedMeal.getTotalCarbs()
                 + selectedMeal.getTotalFat();
         if (selectedMeal.getTotalCarbs() > ((0.6 * totalNutrition) / mealsPerDay)) {
-            listOfErr.add("Too much carbs");
+            listOfErr.add("Carbs percentage is too high!");
         }
 
         if (selectedMeal.getTotalFat() > ((0.25 * totalNutrition) / mealsPerDay)) {
-            listOfErr.add("Too much fat");
+            listOfErr.add("Fat percentage is too high!");
         }
         return listOfErr;
     }

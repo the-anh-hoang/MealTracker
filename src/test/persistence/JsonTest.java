@@ -1,6 +1,6 @@
 package persistence;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import model.*;
 
@@ -48,7 +48,7 @@ public class JsonTest {
         assertEquals(age, user.getAge());
         assertEquals(sex, user.getSex());
         assertEquals(goals, user.getGoals());
-        assertEquals(foods, user.getFoods());
-        assertEquals(meals, user.getMeals());
+        assertTrue(foods.equals(user.getFoods()));
+        assertTrue(meals.equals(user.getMeals()));
     }
 }

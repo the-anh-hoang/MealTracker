@@ -3,62 +3,102 @@
         {
             "foods": [
                 {
-                    "carbs": 3,
-                    "protein": 25,
+                    "carbs": 10,
+                    "protein": 10,
+                    "fat": 10,
                     "name": "Steak",
-                    "fat": 13,
-                    "calories": 250
+                    "calories": 10
                 },
                 {
-                    "carbs": 14,
-                    "protein": 15,
-                    "name": "Sushi",
-                    "fat": 8,
-                    "calories": 200
+                    "carbs": 5,
+                    "protein": 5,
+                    "fat": 5,
+                    "name": "Chicken",
+                    "calories": 5
+                },
+                {
+                    "carbs": 2,
+                    "protein": 2,
+                    "fat": 2,
+                    "name": "Egg",
+                    "calories": 2
                 }
             ],
-            "name": "Healthy Meal"
+            "name": "Recommended For Muscle Gain"
         },
         {
             "foods": [
                 {
-                    "carbs": 14,
-                    "protein": 15,
-                    "name": "Sushi",
-                    "fat": 8,
-                    "calories": 200
+                    "carbs": 10,
+                    "protein": 10,
+                    "fat": 10,
+                    "name": "Steak",
+                    "calories": 10
                 },
                 {
-                    "carbs": 3,
-                    "protein": 25,
-                    "name": "Steak",
-                    "fat": 13,
-                    "calories": 250
+                    "carbs": 5,
+                    "protein": 5,
+                    "fat": 5,
+                    "name": "Chicken",
+                    "calories": 5
                 }
             ],
-            "name": "Recommended For Weight Loss"
+            "name": "Recommended For Muscle Gain"
+        },
+        {
+            "foods": [
+                {
+                    "carbs": 10,
+                    "protein": 10,
+                    "fat": 10,
+                    "name": "Steak",
+                    "calories": 10
+                },
+                {
+                    "carbs": 10,
+                    "protein": 10,
+                    "fat": 10,
+                    "name": "Steak",
+                    "calories": 10
+                },
+                {
+                    "carbs": 5,
+                    "protein": 5,
+                    "fat": 5,
+                    "name": "Chicken",
+                    "calories": 5
+                }
+            ],
+            "name": "New meal"
         }
     ],
     "goal": "MG",
-    "sex": "female",
-    "weight": 50,
+    "sex": "male",
+    "weight": 65,
     "Saved foods": [
         {
-            "carbs": 14,
-            "protein": 15,
-            "name": "Sushi",
-            "fat": 8,
-            "calories": 200
+            "carbs": 10,
+            "protein": 10,
+            "name": "Steak",
+            "fat": 10,
+            "calories": 10
         },
         {
-            "carbs": 3,
-            "protein": 25,
-            "name": "Steak",
-            "fat": 13,
-            "calories": 250
+            "carbs": 5,
+            "protein": 5,
+            "name": "Chicken",
+            "fat": 5,
+            "calories": 5
+        },
+        {
+            "carbs": 2,
+            "protein": 2,
+            "name": "Egg",
+            "fat": 2,
+            "calories": 2
         }
     ],
     "age": 19,
-    "username": "Jasmine",
-    "height": 164
+    "username": "Harry",
+    "height": 175
 }

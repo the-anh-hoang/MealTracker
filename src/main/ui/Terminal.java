@@ -200,7 +200,7 @@ public class Terminal {
         int selection;
         Meal newMeal = new Meal(name);
         for (int i = 0; i < amount; i++) {
-            System.out.print("Please select the food you'd like to add (1-" + userFoods.size() + ")");
+            System.out.print("Please select the food you'd like to add (1-" + userFoods.size() + "): ");
             selection = scanner.nextInt();
             newMeal.addFood(userFoods.get(selection - 1));
             System.out.println("Food added to meal successfully!");
