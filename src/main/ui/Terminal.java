@@ -49,6 +49,7 @@ public class Terminal {
         }
     }
 
+    @SuppressWarnings("methodlength")
     private boolean runOption(int choice) {
         switch (choice) {
             case 1:
