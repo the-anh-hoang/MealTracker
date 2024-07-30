@@ -19,6 +19,7 @@ public class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("imSoTiredWithThis!!!.json");
         try {
             User user = reader.read();
+            user.getName(); 
             fail("IOException expected");
         } catch (IOException e) {
             // expected

@@ -53,6 +53,13 @@ public class UserTest {
     }
 
     @Test
+    public void testGetGoalsForUI() {
+        assertEquals("Muscle Gain", testUser1.getGoalsForUI());
+        testUser1.changeGoal();
+        assertEquals("Weight Loss", testUser1.getGoalsForUI()); 
+    }
+
+    @Test
     public void testChangeGoal() {
         testUser1.changeGoal();
         assertEquals("WL", testUser1.getGoals());
@@ -93,12 +100,12 @@ public class UserTest {
 
         List<String> user1MealEvaluate = new ArrayList<String>();
         user1MealEvaluate.add("Not enough protein");
-        user1MealEvaluate.add("Too much fat");
+        user1MealEvaluate.add("Fat percentage is too high!");
 
         assertEquals(user1MealEvaluate, testUser1.evaluateNutrition(1, 1));
 
         List<String> user1Meal2Evaluate = new ArrayList<String>();
-        user1Meal2Evaluate.add("Too much carbs");
+        user1Meal2Evaluate.add("Carbs percentage is too high!");
         List<String> listOfErr = testUser1.evaluateNutrition(2, 1);
         assertEquals(user1Meal2Evaluate, listOfErr);
 

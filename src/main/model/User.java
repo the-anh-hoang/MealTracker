@@ -160,7 +160,7 @@ public class User implements Writable {
         return this.height;
     }
 
-    public float getAge() {
+    public int getAge() {
         return this.age;
     }
 
@@ -178,6 +178,15 @@ public class User implements Writable {
 
     public List<Food> getFoods() {
         return this.foods;
+    }
+
+    // EFFECTS: return the full goal for UI
+    public String getGoalsForUI() {
+        if (goals == "MG") {
+            return "Muscle Gain";
+        } else {
+            return "Weight Loss"; 
+        }
     }
 
 }
