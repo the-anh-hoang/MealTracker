@@ -18,6 +18,13 @@ public class Meal implements Writable {
         foods = new ArrayList<Food>();
     }
 
+    // EFFECTS instantiates a meal with name and consists of given foods.
+    // For testing purposes. 
+    public Meal(String name, List<Food> listOfFoods) {
+        this.name = name;
+        foods = listOfFoods; 
+    }
+
     // MODIFIES: this
     // EFFECTS: add a food item to the meal
     public void addFood(Food food) {

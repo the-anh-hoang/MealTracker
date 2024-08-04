@@ -62,10 +62,7 @@ public class Food implements Writable {
             return false;
         }
         Food food = (Food) o;
-        return calories == food.calories
-                && protein == food.protein
-                && carbs == food.carbs
-                && fat == food.fat
+        return calories == food.calories && protein == food.protein && carbs == food.carbs && fat == food.fat
                 && Objects.equals(name, food.name);
     }
 

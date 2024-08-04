@@ -40,7 +40,7 @@ public class JsonTest {
         mealList.add(meal2);
     }
 
-    protected void checkUser(String name, float weight, float height, float age, String sex, String goals,
+    protected void checkUser(String name, float weight, float height, int age, String sex, String goals,
             List<Food> foods, List<Meal> meals, User user) {
         assertEquals(name, user.getName());
         assertEquals(weight, user.getWeight());
@@ -48,7 +48,11 @@ public class JsonTest {
         assertEquals(age, user.getAge());
         assertEquals(sex, user.getSex());
         assertEquals(goals, user.getGoals());
-        assertTrue(foods.equals(user.getFoods()));
-        assertTrue(meals.equals(user.getMeals()));
+        for (int i = 0; i < foods.size(); i++) {
+            assertTrue(foods.get(i).equals(user.getFoods().get(i)));
+        }
+        for (int i = 0; i < meals.size(); i++) {
+            assertTrue(meals.get(i).equals(user.getMeals().get(i)));
+        }
     }
 }
