@@ -5,22 +5,22 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "fat": 10,
                     "name": "Steak",
+                    "fat": 10,
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "fat": 5,
                     "name": "Chicken",
+                    "fat": 5,
                     "calories": 5
                 },
                 {
                     "carbs": 2,
                     "protein": 2,
-                    "fat": 2,
                     "name": "Egg",
+                    "fat": 2,
                     "calories": 2
                 }
             ],
@@ -31,15 +31,15 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "fat": 10,
                     "name": "Steak",
+                    "fat": 10,
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "fat": 5,
                     "name": "Chicken",
+                    "fat": 5,
                     "calories": 5
                 }
             ],
@@ -50,22 +50,22 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "fat": 10,
                     "name": "Steak",
+                    "fat": 10,
                     "calories": 10
                 },
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "fat": 10,
                     "name": "Steak",
+                    "fat": 10,
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "fat": 5,
                     "name": "Chicken",
+                    "fat": 5,
                     "calories": 5
                 }
             ],

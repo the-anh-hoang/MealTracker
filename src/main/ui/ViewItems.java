@@ -2,8 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.Dimension;
-import java.util.List; 
-import model.User;
 
 
 public abstract class ViewItems extends JDialog {
@@ -13,13 +11,13 @@ public abstract class ViewItems extends JDialog {
 
     public ViewItems(JFrame parentObj, String title) {
         super(parentObj, title, true);
-        this.parentObj = parentObj;
         contentPanel = new JPanel();
-        setSize(300, 400);
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        setSize(300, 400);
+        this.parentObj = parentObj;
         addScrollPane();
-
     }
+
 
     public abstract void itemDisplay();
 
@@ -36,5 +34,4 @@ public abstract class ViewItems extends JDialog {
         contentPanel.add(closeButton);
         setLocationRelativeTo(parentObj);
     }
-    
 }

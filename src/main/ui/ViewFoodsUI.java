@@ -15,6 +15,7 @@ public class ViewFoodsUI extends ViewItems {
         itemDisplay();
     }
 
+    @Override
     public void itemDisplay() {
         List<Food> listOfFoods = user.getFoods();
         for (int i = 0; i < listOfFoods.size(); i++) {
