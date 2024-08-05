@@ -55,8 +55,6 @@ public class MealTest {
         assertEquals(food1, (testMeal.getFoods()).get(1));
     }
 
-
-
     @Test 
     void testGetTotalCalories() {
         assertEquals(560, testMeal.getTotalCalories());

@@ -6,9 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class UserSelectionUI extends JPanel {
+public class UserSelectionUI extends ImagePanel {
 
     public UserSelectionUI(MealTrackerUI parentObj) {
+        super("./background.jpg"); 
         setLayout(null);
 
         JButton loadDataButton = new JButton("Load Data");
@@ -31,7 +32,7 @@ public class UserSelectionUI extends JPanel {
                 parentObj.switchPanel(mainMenu);
             }
         });
-    }
+    }  
 
     private void setNewUserAction(JButton button, MealTrackerUI parentObj) {
         button.addActionListener(new ActionListener() {
