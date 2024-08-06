@@ -97,7 +97,13 @@ public class MainMenuUI extends JPanel {
 
     // EFFECTS: create new panel that prompt user to select the foods to add 
     private void setCreateManualMealFunction(JButton button) {
-        
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CreateMealUI createMealUI = new CreateMealUI(parentObj, user);
+                createMealUI.setVisible(true);
+            }
+        });
     }
 
     // EFFECTS: generate a new meal and save to user based on goals
