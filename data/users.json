@@ -5,22 +5,22 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 },
                 {
                     "carbs": 2,
                     "protein": 2,
-                    "name": "Egg",
                     "fat": 2,
+                    "name": "Egg",
                     "calories": 2
                 }
             ],
@@ -31,15 +31,15 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 }
             ],
@@ -50,29 +50,29 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 }
             ],
             "name": "New meal"
         }
     ],
-    "goal": "MG",
+    "goal": "WL",
     "sex": "male",
     "weight": 65,
     "Saved foods": [

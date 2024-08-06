@@ -182,11 +182,10 @@ public class User implements Writable {
 
     // EFFECTS: return the full goal for UI
     public String getGoalsForUI() {
-        if (goals == "MG") {
+        if (goals.equals("MG")) {
             return "Muscle Gain";
         } else {
             return "Weight Loss"; 
         }
     }
-
 }

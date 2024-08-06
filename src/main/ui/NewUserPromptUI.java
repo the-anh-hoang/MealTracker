@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Vector;
 
-import model.User; 
+import model.User;
 
 public class NewUserPromptUI extends JPanel {
-    private MealTrackerUI parentObj; 
+    private MealTrackerUI parentObj;
     private JTextField nameField;
     private JTextField weightField;
     private JTextField heightField;
@@ -22,9 +22,17 @@ public class NewUserPromptUI extends JPanel {
     private static final int HEIGHT_START = 40;
     private static final int SPACING = 50;
 
+    // EFFECTS: create panel with prompts that allow user to enter their info
     public NewUserPromptUI(MealTrackerUI parentObj) {
-        this.parentObj = parentObj; 
+        this.parentObj = parentObj;
         setLayout(null);
+        setUpFieldsandLabels();
+        setUpSubmitButton();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: setting up all the fields and labels
+    private void setUpFieldsandLabels() {
         setUpLabel("Name: ", HEIGHT_START);
         nameField = setUpField(HEIGHT_START);
 
@@ -44,16 +52,18 @@ public class NewUserPromptUI extends JPanel {
         setUpLabel("Goal: ", HEIGHT_START + SPACING * 5);
         Vector<String> goalChoices = new Vector<>(Arrays.asList("Muscle Gain", "Weight Loss"));
         goalField = setUpComboChoice(goalChoices, HEIGHT_START + SPACING * 5);
-
-        setUpSubmitButton();
     }
 
+    // MODIFIES: this
+    // EFFECTS: add new label with name at y coordinate
     private void setUpLabel(String labelName, int ycor) {
         JLabel label = new JLabel(labelName);
         label.setBounds(XCOR, ycor, FIELD_WIDTH, FIELD_HEIGHT);
         add(label);
     }
 
+    // MODIFIES: this
+    // EFFECTS: add new field at y coordinate
     private JTextField setUpField(int ycor) {
         JTextField textField = new JTextField(20);
         textField.setBounds(XCOR + 100, ycor, FIELD_WIDTH, FIELD_HEIGHT);
@@ -61,6 +71,8 @@ public class NewUserPromptUI extends JPanel {
         return textField;
     }
 
+    // MODIFIES: this
+    // EFFECTS: add new choice box with choices at y coordinate
     private JComboBox<String> setUpComboChoice(Vector<String> choices, int ycor) {
         JComboBox<String> combo = new JComboBox<>(choices);
         combo.setBounds(XCOR + 100, ycor, FIELD_WIDTH, FIELD_HEIGHT);
@@ -68,11 +80,12 @@ public class NewUserPromptUI extends JPanel {
         return combo;
     }
 
-    private void setUpSubmitButton() { 
+    // MODIFIES: this
+    // EFFECTS: add submit button that records all fields and parse into user
+    private void setUpSubmitButton() {
         JButton submitButton = new JButton("Submit");
-        submitButton.setBounds(400, MealTrackerUI.HEIGHT/2 - 75, 150, 100);
+        submitButton.setBounds(400, MealTrackerUI.HEIGHT / 2 - 75, 150, 100);
         add(submitButton);
-
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,9 +100,8 @@ public class NewUserPromptUI extends JPanel {
                 } else {
                     goal = "WL";
                 }
-
                 User newUser = new User(name, weight, height, age, sex, goal);
-                parentObj.setUser(newUser); 
+                parentObj.setUser(newUser);
                 parentObj.switchPanel(new MainMenuUI(parentObj));
             }
         });

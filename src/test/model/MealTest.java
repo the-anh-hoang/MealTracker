@@ -82,13 +82,16 @@ public class MealTest {
 
     @Test
     public void testEquals_Symmetry() {
-        assertTrue(meal1.equals(meal2) && meal2.equals(meal1));
+        assertTrue(meal1.equals(meal2));
+        assertTrue(meal2.equals(meal1));
     }
 
     @Test
     public void testEquals_Transitivity() {
         Meal meal4 = new Meal("Meal 1", meal1.getFoods());
-        assertTrue(meal1.equals(meal2) && meal2.equals(meal4) && meal1.equals(meal4));
+        assertTrue(meal1.equals(meal2));
+        assertTrue(meal2.equals(meal4));
+        assertTrue(meal1.equals(meal4));
     }
 
     @Test

@@ -10,6 +10,7 @@ import java.net.URL;
 public class ImagePanel extends JPanel {
     private Image backgroundImage;
 
+    // EFFECTS: initialize the background image stored in path
     public ImagePanel(String path) {
         setLayout(null);
         try {
@@ -19,7 +20,9 @@ public class ImagePanel extends JPanel {
             e.printStackTrace();
         }
     }
-
+    
+    // MODIFIES: this
+    // EFFECTS: paint the background image onto the panel
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

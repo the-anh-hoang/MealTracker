@@ -82,6 +82,7 @@ public class Meal implements Writable {
         return this.foods;
     }
 
+    // EFFECTS: return a JSONObject representing this
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -90,6 +91,7 @@ public class Meal implements Writable {
         return json;
     }
 
+    // EFFECTS: 2 meals are equals if they have the same name and the same list of foods
     @Override
     public boolean equals(Object o) {
         if (this == o) {

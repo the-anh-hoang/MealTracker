@@ -9,6 +9,7 @@ public abstract class ViewItems extends JDialog {
     protected JPanel contentPanel;
     private JFrame parentObj;
 
+    // EFFECTS: initialize a panel for viewing items in a list
     public ViewItems(JFrame parentObj, String title) {
         super(parentObj, title, true);
         contentPanel = new JPanel();
@@ -21,6 +22,8 @@ public abstract class ViewItems extends JDialog {
 
     public abstract void itemDisplay();
 
+    // MODIFIES: this
+    // EFFECTS: adding a scroll pane for long lists
     public void addScrollPane() {
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -28,6 +31,8 @@ public abstract class ViewItems extends JDialog {
         add(scrollPane);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adding a close button to close the panel
     public void addCloseButton() {
         JButton closeButton = new JButton("Close");
         closeButton.addActionListener(e -> dispose());

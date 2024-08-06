@@ -9,12 +9,14 @@ public class ViewMealsUI extends ViewItems {
     
     private User user;
 
+    // EFFECTS: initialize the view meals panel
     public ViewMealsUI(JFrame parentObj, User user) {
         super(parentObj, "Saved Meals");  
         this.user = user;
         itemDisplay();
     }
 
+    // EFFECTS: display the meals stored in user using html
     @Override
     public void itemDisplay() {
         List<Meal> listOfMeals = user.getMeals();

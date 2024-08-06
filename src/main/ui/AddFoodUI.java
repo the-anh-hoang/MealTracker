@@ -16,6 +16,7 @@ public class AddFoodUI extends JDialog {
     private User user;
     private JFrame parentObj; 
 
+    // EFFECTS: initialize the add food panel
     public AddFoodUI(JFrame parentObj, User user) {
         super(parentObj, "Add Food", true); 
         this.parentObj = parentObj;
@@ -25,6 +26,8 @@ public class AddFoodUI extends JDialog {
         panelSetup();
     }
 
+    // MODIFIES: this
+    // EFFECTS: setting up all the fields for user input
     private void panelSetup() {
         nameField = new JTextField(COLS);
         addField("Food Name: ", nameField);
@@ -47,6 +50,8 @@ public class AddFoodUI extends JDialog {
         setLocationRelativeTo(parentObj);
     }
 
+    // MODIFIES: this
+    // EFFECTS: parse all fields and create new food, add it to user
     private void submitFood() {
         String name = nameField.getText();
         int calories = Integer.parseInt(caloriesField.getText());
@@ -59,6 +64,8 @@ public class AddFoodUI extends JDialog {
         dispose();
     }
 
+    // MODIFIES: this
+    // EFFECTS: add the field with a prompt and the field into panel
     private void addField(String prompt, JTextField field) {
         JPanel panel = new JPanel();
         panel.add(new JLabel(prompt));

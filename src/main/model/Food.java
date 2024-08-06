@@ -43,6 +43,7 @@ public class Food implements Writable {
         return this.fat;
     }
 
+    // EFFECTS: return a JSONObject representing this
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
@@ -53,6 +54,7 @@ public class Food implements Writable {
         return json;
     }
 
+    // EFFECTS: define if 2 foods are the same if they have all the same fields
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -14,16 +14,17 @@ class MealTrackerUI extends JFrame {
     public static final String DEST = "./data/users.json"; 
     private User user;
 
-
+    // EFFECTS: kicks off the program by prompting the user with UserSeleciton panel
     public MealTrackerUI() {
         super("Meal Tracker");
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
         add(new UserSelectionUI(this));
         setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: switch to new panel
     public void switchPanel(JPanel panel) {
         getContentPane().removeAll();
         getContentPane().add(panel);
@@ -31,6 +32,8 @@ class MealTrackerUI extends JFrame {
         repaint();
     }
 
+    // MODIFIES: this
+    // EFFECTS: load the user data from users.json and parse into this
     public void loadUserData() { 
         JsonReader jsonReader = new JsonReader(DEST);
         try {
@@ -42,6 +45,7 @@ class MealTrackerUI extends JFrame {
         }
     }
 
+    // EFFECTS: save current user's data into users.json
     public void saveUser() {
         JsonWriter jsonWriter = new JsonWriter(DEST);
         try {
@@ -53,8 +57,6 @@ class MealTrackerUI extends JFrame {
             System.out.println("Unable to write to file: " + DEST);
         }
     }
-
-
 
     public User getUser() {
         return user; 
