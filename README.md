@@ -15,3 +15,9 @@ As someone who likes to work out, this project is interesting for me because it 
 - As a user, I want to save my information as a user in the system (if I wish to do so)
 - As a user, I want to have the option to access to all meals and foods that I have saved
 
+**Instructions for Grader:**
+- You can load the existing user or create a new one from the initial menu.
+- After that, you can add the food to your current list of foods by clicking on the add food button. 
+- You can view all of your saved foods and meals by pressing the view saved foods or view saved meals button.
+- The visual component can be found when the application starts. It's the background for the initial menu.
+- You can save all of your current information by pressing the save data button. 
