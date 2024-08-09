@@ -76,18 +76,18 @@ public class MealTest {
     }
 
     @Test
-    public void testEquals_Reflexivity() {
+    public void testEqualsReflexivity() {
         assertTrue(meal1.equals(meal1));
     }
 
     @Test
-    public void testEquals_Symmetry() {
+    public void testEqualsSymmetry() {
         assertTrue(meal1.equals(meal2));
         assertTrue(meal2.equals(meal1));
     }
 
     @Test
-    public void testEquals_Transitivity() {
+    public void testEqualsTransitivity() {
         Meal meal4 = new Meal("Meal 1", meal1.getFoods());
         assertTrue(meal1.equals(meal2));
         assertTrue(meal2.equals(meal4));
@@ -95,35 +95,35 @@ public class MealTest {
     }
 
     @Test
-    public void testEquals_Null() {
+    public void testEqualsNull() {
         assertFalse(meal1.equals(null));
     }
 
     @Test
-    public void testEquals_DifferentClass() {
+    public void testEqualsDifferentClass() {
         Object differentClassObject = new String("Not a Meal");
         assertFalse(meal1.equals(differentClassObject));
     }
 
     @Test
-    public void testEquals_DifferentName() {
+    public void testEqualsDifferentName() {
         Meal mealWithDifferentName = new Meal("Meal 2", meal1.getFoods());
         assertFalse(meal1.equals(mealWithDifferentName));
     }
 
     @Test
-    public void testEquals_DifferentFoods() {
+    public void testEqualsDifferentFoods() {
         assertFalse(meal1.equals(meal3));
     }
 
     @Test
-    public void testHashCode_Consistency() {
+    public void testHashCodeConsistency() {
         int hashCode1 = meal1.hashCode();
         assertEquals(hashCode1, meal1.hashCode());
     }
 
     @Test
-    public void testHashCode_Equality() {
+    public void testHashCodeEquality() {
         assertEquals(meal1.hashCode(), meal2.hashCode());
     }
 }

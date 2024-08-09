@@ -15,7 +15,7 @@ public class MealGeneratorTest {
     @BeforeEach
     void beforeEach() {
         food1 = new Food("Wings", 300, 20, 10, 10);
-        food2 = new Food( "Egg", 60, 6, 1, 5); 
+        food2 = new Food("Egg", 60, 6, 1, 5); 
         food3 = new Food("fish", 200, 30, 2, 50);
         listOfFoods = new ArrayList<Food>(); 
         listOfFoods.add(food1);

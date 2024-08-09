@@ -93,35 +93,40 @@ public class UserTest {
     public void testEvaluateNutrition() {
         testUser1.addMeal(testMeal);
         testUser1.addMeal(testMeal2);
-        testUser2.addMeal(testMeal);
-        testUser2.addMeal(testMeal2);
-        testUser3.addMeal(testMeal);
-        testUser3.addMeal(testMeal2);
-
+        
         List<String> user1MealEvaluate = new ArrayList<String>();
         user1MealEvaluate.add("Not enough protein");
         user1MealEvaluate.add("Fat percentage is too high!");
-
         assertEquals(user1MealEvaluate, testUser1.evaluateNutrition(1, 1));
-
         List<String> user1Meal2Evaluate = new ArrayList<String>();
         user1Meal2Evaluate.add("Carbs percentage is too high!");
         List<String> listOfErr = testUser1.evaluateNutrition(2, 1);
         assertEquals(user1Meal2Evaluate, listOfErr);
 
+        
+
+        
+    }
+
+    @Test
+    public void testEvaluateNutrition2() {
+        testUser2.addMeal(testMeal);
+        testUser2.addMeal(testMeal2);
         List<String> user2MealEvaluate = new ArrayList<String>();
         user2MealEvaluate.add("Too much calories");
         assertEquals(user2MealEvaluate, testUser2.evaluateNutrition(1, 1));
-
         List<String> user2Meal2Evaluate = new ArrayList<String>();
         assertEquals(user2Meal2Evaluate, testUser2.evaluateNutrition(2, 1));
+    }
 
+    @Test
+    public void testEvaluateNutrion3() {
+        testUser3.addMeal(testMeal);
+        testUser3.addMeal(testMeal2);
         List<String> user3MealEvaluate = new ArrayList<String>();
         user3MealEvaluate.add("Too much calories");
         assertEquals(user3MealEvaluate, testUser3.evaluateNutrition(1, 1));
-
         List<String> user3Meal2Evaluate = new ArrayList<String>();
         assertEquals(user3Meal2Evaluate, testUser3.evaluateNutrition(2, 1));
-
     }
 }
