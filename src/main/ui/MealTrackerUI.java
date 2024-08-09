@@ -3,7 +3,8 @@ package ui;
 import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import model.*;
 import persistence.*;
 
@@ -21,6 +22,13 @@ class MealTrackerUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(new UserSelectionUI(this));
         setVisible(true);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printEventLog();
+                System.exit(0);
+            }
+        });
     }
 
     // MODIFIES: this
@@ -43,6 +51,7 @@ class MealTrackerUI extends JFrame {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + DEST);
         }
+        
     }
 
     // EFFECTS: save current user's data into users.json
@@ -66,10 +75,18 @@ class MealTrackerUI extends JFrame {
         this.user = user;
     }
 
+    // EFFECTS: print the event log to console
+    public void printEventLog() {
+        EventLog log = EventLog.getInstance();
+        for (Event event : log) {
+            System.out.println(event);
+        }
+    }
+
     public static void main(String[] args) {
         new MealTrackerUI();
     }
     
-
+    
 
 }

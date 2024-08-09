@@ -21,3 +21,16 @@ As someone who likes to work out, this project is interesting for me because it 
 - You can view all of your saved foods and meals by pressing the view saved foods or view saved meals button.
 - The visual component can be found when the application starts. It's the background for the initial menu.
 - You can save all of your current information by pressing the save data button. 
+
+**Phase 4: Task 2**
+
+Thu Aug 08 22:52:06 PDT 2024
+User: Harry
+Thu Aug 08 22:52:12 PDT 2024
+Added food: apple
+Thu Aug 08 22:52:19 PDT 2024
+Added food: banana
+Thu Aug 08 22:52:26 PDT 2024
+Added meal: all fruits
+Thu Aug 08 22:52:31 PDT 2024
+Added meal: 1 fruit

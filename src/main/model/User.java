@@ -30,6 +30,7 @@ public class User implements Writable {
         this.goals = goals;
         this.meals = new ArrayList<Meal>();
         this.foods = new ArrayList<Food>();
+        EventLog.getInstance().logEvent(new Event("User: " + this.name));
     }
 
     // MODIFIES: this
@@ -40,18 +41,21 @@ public class User implements Writable {
         } else {
             goals = "WL";
         }
+        EventLog.getInstance().logEvent(new Event("Changed goal to: " + this.goals));
     }
 
     // MODIFIES: this
     // EFFECTS: add food into user's list of foods
     public void addFood(Food food) {
         foods.add(food);
+        EventLog.getInstance().logEvent(new Event("Added food: " + food.getName()));
     }
 
     // MODIFIES: this
     // EFFECTS: save meal into user's list of foods
     public void addMeal(Meal meal) {
         meals.add(meal);
+        EventLog.getInstance().logEvent(new Event("Added meal: " + meal.getName()));
     }
 
     // REQUIRES: mealsPerDay > 0
@@ -127,6 +131,7 @@ public class User implements Writable {
         json.put("goal", goals);
         json.put("Saved foods", savedFoodsToJson());
         json.put("Saved meals", savedMealsToJson());
+        EventLog.getInstance().logEvent(new Event("Saved user: " + this.name));
         return json;
     }
 

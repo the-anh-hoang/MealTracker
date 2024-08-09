@@ -5,22 +5,22 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 },
                 {
                     "carbs": 2,
                     "protein": 2,
-                    "name": "Egg",
                     "fat": 2,
+                    "name": "Egg",
                     "calories": 2
                 }
             ],
@@ -31,15 +31,15 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 }
             ],
@@ -50,22 +50,22 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 }
             ],
@@ -76,15 +76,15 @@
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 },
                 {
                     "carbs": 2,
                     "protein": 2,
-                    "name": "Egg",
                     "fat": 2,
+                    "name": "Egg",
                     "calories": 2
                 }
             ],
@@ -95,19 +95,71 @@
                 {
                     "carbs": 10,
                     "protein": 10,
-                    "name": "Steak",
                     "fat": 10,
+                    "name": "Steak",
                     "calories": 10
                 },
                 {
                     "carbs": 5,
                     "protein": 5,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 5
                 }
             ],
             "name": "Get a life"
+        },
+        {
+            "foods": [
+                {
+                    "carbs": 10,
+                    "protein": 10,
+                    "fat": 10,
+                    "name": "Steak",
+                    "calories": 10
+                },
+                {
+                    "carbs": 5,
+                    "protein": 5,
+                    "fat": 5,
+                    "name": "Chicken",
+                    "calories": 5
+                },
+                {
+                    "carbs": 20,
+                    "protein": 2,
+                    "fat": 50,
+                    "name": "cake",
+                    "calories": 500
+                }
+            ],
+            "name": "newmeale"
+        },
+        {
+            "foods": [
+                {
+                    "carbs": 10,
+                    "protein": 10,
+                    "fat": 10,
+                    "name": "Steak",
+                    "calories": 10
+                },
+                {
+                    "carbs": 2,
+                    "protein": 2,
+                    "fat": 2,
+                    "name": "Egg",
+                    "calories": 2
+                },
+                {
+                    "carbs": 30,
+                    "protein": 20,
+                    "fat": 25,
+                    "name": "Pasta",
+                    "calories": 250
+                }
+            ],
+            "name": "Let's Go"
         }
     ],
     "goal": "WL",
@@ -134,6 +186,20 @@
             "name": "Egg",
             "fat": 2,
             "calories": 2
+        },
+        {
+            "carbs": 20,
+            "protein": 2,
+            "name": "cake",
+            "fat": 50,
+            "calories": 500
+        },
+        {
+            "carbs": 30,
+            "protein": 20,
+            "name": "Pasta",
+            "fat": 25,
+            "calories": 250
         }
     ],
     "age": 19,

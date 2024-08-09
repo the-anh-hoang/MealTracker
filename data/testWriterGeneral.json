@@ -5,15 +5,15 @@
                 {
                     "carbs": 2,
                     "protein": 25,
-                    "name": "Chicken",
                     "fat": 5,
+                    "name": "Chicken",
                     "calories": 200
                 },
                 {
                     "carbs": 3,
                     "protein": 25,
-                    "name": "Salmon",
                     "fat": 12,
+                    "name": "Salmon",
                     "calories": 300
                 }
             ],
@@ -24,15 +24,15 @@
                 {
                     "carbs": 3,
                     "protein": 25,
-                    "name": "Salmon",
                     "fat": 12,
+                    "name": "Salmon",
                     "calories": 300
                 },
                 {
                     "carbs": 2,
                     "protein": 6,
-                    "name": "Egg",
                     "fat": 5,
+                    "name": "Egg",
                     "calories": 20
                 }
             ],
