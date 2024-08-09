@@ -34,3 +34,9 @@ Thu Aug 08 22:52:26 PDT 2024
 Added meal: all fruits
 Thu Aug 08 22:52:31 PDT 2024
 Added meal: 1 fruit
+
+**Phase 4: Task 3**
+
+Things to improve: 
+- Meal generator can be implemented in Meal instead of being a separate class
+- Too many classes that depends on user with out needing to. For example, ViewFoods, ViewMeals, MainMenuUI all depends on User while they can be refactored to access through MealTrackerUI. 
