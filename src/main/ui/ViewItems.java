@@ -28,6 +28,7 @@ public abstract class ViewItems extends JDialog {
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setPreferredSize(new Dimension(380, 280));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane);
     }
 

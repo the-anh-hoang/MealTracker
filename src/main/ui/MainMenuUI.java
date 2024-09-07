@@ -44,12 +44,12 @@ public class MainMenuUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: set up all the buttons and their functions on the left
     private void setupButtons(MealTrackerUI parentObj) {
-        JButton addFoodButton = addButton("Add Food", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 7);
-        addFoodFunction(addFoodButton);
-        JButton viewFoodsButton = addButton("View Saved Foods", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 6);
-        setViewFoodsFunction(viewFoodsButton);
-        JButton viewMealsButton = addButton("View Saved Meals", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 5);
-        setViewMealsFunction(viewMealsButton);
+        JButton FoodButton = addButton("Add Food", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 7);
+        setFoodFunction(FoodButton);
+        JButton foodsButton = addButton("My Foods", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 6);
+        setFoodsButtonFunction(foodsButton);
+        JButton mealsButton = addButton("My Meals", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 5);
+        setMealsButtonFunction(mealsButton);
         JButton createManualMealButton = addButton("Create Meal", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 4);
         setCreateManualMealFunction(createManualMealButton);
         JButton generateMealButton = addButton("Auto Generated Meal", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 3);
@@ -63,7 +63,7 @@ public class MainMenuUI extends JPanel {
     }
 
     // EFFECTS: open add food panel when button is pressed
-    private void addFoodFunction(JButton button) {
+    private void setFoodFunction(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +74,7 @@ public class MainMenuUI extends JPanel {
     }
 
     // EFFECTS: open view foods panel when button is pressed
-    private void setViewFoodsFunction(JButton button) {
+    private void setFoodsButtonFunction(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,7 +85,7 @@ public class MainMenuUI extends JPanel {
     }
 
     // EFFECTS: open view meals panel when button is pressed
-    private void setViewMealsFunction(JButton button) {
+    private void setMealsButtonFunction(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
