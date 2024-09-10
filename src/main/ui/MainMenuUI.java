@@ -8,8 +8,8 @@ import model.*;
 public class MainMenuUI extends JPanel {
     private static int WIDTH = MealTrackerUI.WIDTH;
     private static int HEIGHT = MealTrackerUI.HEIGHT;
-    private static int LOW_BORDER = 100;
-    private static int SPACE = 40;
+    private static int LOW_BORDER = 170;
+    private static int SPACE = 50;
     private static int LEFT_BORDER = 60;
     private MealTrackerUI parentObj;
     private User user;
@@ -44,34 +44,16 @@ public class MainMenuUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: set up all the buttons and their functions on the left
     private void setupButtons(MealTrackerUI parentObj) {
-        JButton FoodButton = addButton("Add Food", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 7);
-        setFoodFunction(FoodButton);
-        JButton foodsButton = addButton("My Foods", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 6);
+        JButton foodsButton = addButton("My Foods", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 3);
         setFoodsButtonFunction(foodsButton);
-        JButton mealsButton = addButton("My Meals", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 5);
+        JButton mealsButton = addButton("My Meals", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 2);
         setMealsButtonFunction(mealsButton);
-        JButton createManualMealButton = addButton("Create Meal", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 4);
-        setCreateManualMealFunction(createManualMealButton);
-        JButton generateMealButton = addButton("Auto Generated Meal", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 3);
-        setGenerateMealFunction(generateMealButton);
-        JButton evaluateMealButton = addButton("Evaluate Meal", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 2);
-        setEvaluateMealFunction(evaluateMealButton);
-        JButton changeGoalButton = addButton("Change Goal", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 1);
-        setChangeGoalFunction(changeGoalButton);
+        JButton editProfileButton = addButton("Edit profile", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 1);
+        setEditProfileFunction(editProfileButton);
         JButton saveDataButton = addButton("Save Data", LEFT_BORDER, HEIGHT - LOW_BORDER - SPACE * 0);
         setSaveDataFunction(saveDataButton);
     }
 
-    // EFFECTS: open add food panel when button is pressed
-    private void setFoodFunction(JButton button) {
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AddFoodUI addFoodUI = new AddFoodUI(parentObj, user);
-                addFoodUI.setVisible(true);
-            }
-        });
-    }
 
     // EFFECTS: open view foods panel when button is pressed
     private void setFoodsButtonFunction(JButton button) {
@@ -118,7 +100,7 @@ public class MainMenuUI extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: change the user's goals and update info label when button is pressed
-    private void setChangeGoalFunction(JButton button) {
+    private void setEditProfileFunction(JButton button) {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

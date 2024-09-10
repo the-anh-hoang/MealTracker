@@ -7,20 +7,23 @@ import java.awt.Dimension;
 public abstract class ViewItems extends JDialog {
 
     protected JPanel contentPanel;
-    private JFrame parentObj;
+    protected JFrame parentObj;
 
     // EFFECTS: initialize a panel for viewing items in a list
     public ViewItems(JFrame parentObj, String title) {
         super(parentObj, title, true);
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        setSize(300, 400);
+        setSize(500, 700);
         this.parentObj = parentObj;
         addScrollPane();
+        
     }
 
 
     public abstract void itemDisplay();
+    
+    public abstract void setUpButtons();
 
     // MODIFIES: this
     // EFFECTS: adding a scroll pane for long lists

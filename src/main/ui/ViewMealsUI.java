@@ -13,7 +13,7 @@ public class ViewMealsUI extends ViewItems {
     public ViewMealsUI(JFrame parentObj, User user) {
         super(parentObj, "Saved Meals");  
         this.user = user;
-        itemDisplay();
+      
     }
 
     // EFFECTS: display the meals stored in user using html
@@ -38,5 +38,9 @@ public class ViewMealsUI extends ViewItems {
             itemLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10)); 
             contentPanel.add(itemLabel);
         }
+    }
+
+    public void setUpButtons() {
+
     }
 }
