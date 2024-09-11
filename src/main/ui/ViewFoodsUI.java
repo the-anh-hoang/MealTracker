@@ -35,6 +35,7 @@ public class ViewFoodsUI extends ViewItems {
 
     }
 
+    // EFFECTS: Setting up the buttons and their functions on panel
     protected void setUpButtons() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
@@ -50,6 +51,8 @@ public class ViewFoodsUI extends ViewItems {
         contentPanel.add(buttonPanel);
     }
 
+    // MODIFIES: user
+    // EFFECTS: Setting the add food button
     private void setAddButtonFunction(JButton addButton) {
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -63,6 +66,8 @@ public class ViewFoodsUI extends ViewItems {
 
     }
 
+    // MODIFIES: user
+    // EFFECTS: Setting the remove food button
     private void setRemoveButtonFunction(JButton removeButton) {
         removeButton.addActionListener(new ActionListener() {
             @Override
