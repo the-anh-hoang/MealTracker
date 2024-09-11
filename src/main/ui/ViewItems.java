@@ -14,16 +14,16 @@ public abstract class ViewItems extends JDialog {
         super(parentObj, title, true);
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        setSize(500, 700);
+        setSize(500, 300);
         this.parentObj = parentObj;
         addScrollPane();
         
     }
 
 
-    public abstract void itemDisplay();
+    protected abstract void itemDisplay();
     
-    public abstract void setUpButtons();
+    protected abstract void setUpButtons();
 
     // MODIFIES: this
     // EFFECTS: adding a scroll pane for long lists

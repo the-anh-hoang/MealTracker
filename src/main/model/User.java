@@ -51,6 +51,15 @@ public class User implements Writable {
         EventLog.getInstance().logEvent(new Event("Added food: " + food.getName()));
     }
 
+    public void removeFood(Food food) {
+        foods.remove(food);
+    }
+
+    public void removeFood(List<Food> foods) {
+        for (Food f : foods) {
+            this.foods.remove(f); 
+        }
+    }
     // MODIFIES: this
     // EFFECTS: save meal into user's list of foods
     public void addMeal(Meal meal) {

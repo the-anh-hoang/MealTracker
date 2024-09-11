@@ -4,9 +4,9 @@ import model.User;
 import model.Food;
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ViewFoodsUI extends ViewItems {
 
@@ -24,7 +24,7 @@ public class ViewFoodsUI extends ViewItems {
 
     // EFFECTS: display the foods stored in user using html
     @Override
-    public void itemDisplay() {
+    protected void itemDisplay() {
         foodListModel = new DefaultListModel<>();
         user.getFoods().forEach(foodListModel::addElement);
         foodJList = new JList<>(foodListModel);
@@ -32,46 +32,63 @@ public class ViewFoodsUI extends ViewItems {
         foodJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         JScrollPane scrollPane = new JScrollPane(foodJList);
         contentPanel.add(scrollPane);
-        
+
     }
 
-
-    public void setUpButtons() {
+    protected void setUpButtons() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
 
         JButton addButton = new JButton("Add Food");
+        setAddButtonFunction(addButton);
+        buttonPanel.add(addButton);
+
+        JButton removeButton = new JButton("Remove Selected Food");
+        setRemoveButtonFunction(removeButton);
+        buttonPanel.add(removeButton);
+
+        contentPanel.add(buttonPanel);
+    }
+
+    private void setAddButtonFunction(JButton addButton) {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddFoodUI addFoodUI = new AddFoodUI(parentObj, user);
                 addFoodUI.setVisible(true);
+                foodListModel.clear();
+                user.getFoods().forEach(foodListModel::addElement);
             }
         });
-        buttonPanel.add(addButton);
 
-        JButton removeButton = new JButton("Remove Selected Food");
+    }
+
+    private void setRemoveButtonFunction(JButton removeButton) {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddFoodUI addFoodUI = new AddFoodUI(parentObj, user);
-                addFoodUI.setVisible(true);
+                List<Food> selectedFoods = foodJList.getSelectedValuesList();
+                for (Food f : selectedFoods) {
+                    user.removeFood(f);
+                    foodListModel.removeElement(f);
+                }
+                foodJList.repaint();
             }
         });
-        buttonPanel.add(removeButton);
-        contentPanel.add(buttonPanel);
     }
 
-    class FoodListCellRenderer extends DefaultListCellRenderer {
+    private class FoodListCellRenderer extends DefaultListCellRenderer {
         @Override
-        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                boolean cellHasFocus) {
             super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
             if (value instanceof Food) {
                 Food food = (Food) value;
-                setText(String.format("<html><b>%s</b>: Calories: %.1f, Protein: %.1f g, Carbs: %.1f g, Fat: %.1f g</html>",
+                setText(String.format(
+                        "<html><b>%s</b>: Calories: %.1f, Protein: %.1f g, Carbs: %.1f g, Fat: %.1f g</html>",
                         food.getName(), food.getCalories(), food.getProtein(), food.getCarbs(), food.getFat()));
             }
-            
+
             return this;
         }
     }
