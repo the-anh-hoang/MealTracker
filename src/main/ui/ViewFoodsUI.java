@@ -18,25 +18,25 @@ public class ViewFoodsUI extends ViewItems {
     public ViewFoodsUI(JFrame parentObj, User user) {
         super(parentObj, "Saved Foods");
         this.user = user;
-        itemDisplay();
-        setUpButtons();
+        foodListModel = new DefaultListModel<>();
+        foodJList = new JList<>(foodListModel);
+        setUpScrollPanel();
+        setUpButtonPanel();
     }
 
-    // EFFECTS: display the foods stored in user using html
+    // EFFECTS: set up the scroll panel displaying the foods
     @Override
-    protected void itemDisplay() {
-        foodListModel = new DefaultListModel<>();
+    protected void setUpScrollPanel() {
         user.getFoods().forEach(foodListModel::addElement);
-        foodJList = new JList<>(foodListModel);
-        foodJList.setCellRenderer(new FoodListCellRenderer());
+        foodJList.setCellRenderer(new ItemListCellRenderer());
         foodJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         JScrollPane scrollPane = new JScrollPane(foodJList);
-        contentPanel.add(scrollPane);
-
+        mainPanel.add(scrollPane);
     }
 
-    // EFFECTS: Setting up the buttons and their functions on panel
-    protected void setUpButtons() {
+    // EFFECTS: Setting up the buttons and their functions on the button panel
+    @Override
+    protected void setUpButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
 
@@ -48,7 +48,7 @@ public class ViewFoodsUI extends ViewItems {
         setRemoveButtonFunction(removeButton);
         buttonPanel.add(removeButton);
 
-        contentPanel.add(buttonPanel);
+        mainPanel.add(buttonPanel);
     }
 
     // MODIFIES: user
@@ -80,21 +80,5 @@ public class ViewFoodsUI extends ViewItems {
                 foodJList.repaint();
             }
         });
-    }
-
-    private class FoodListCellRenderer extends DefaultListCellRenderer {
-        @Override
-        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
-                boolean cellHasFocus) {
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (value instanceof Food) {
-                Food food = (Food) value;
-                setText(String.format(
-                        "<html><b>%s</b>: Calories: %.1f, Protein: %.1f g, Carbs: %.1f g, Fat: %.1f g</html>",
-                        food.getName(), food.getCalories(), food.getProtein(), food.getCarbs(), food.getFat()));
-            }
-
-            return this;
-        }
     }
 }
